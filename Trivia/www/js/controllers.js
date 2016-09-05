@@ -51,6 +51,24 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
+.controller('logCtrl', function($scope){
+
+   $scope.login=function(){
+     if($scope.login.usuario==null){
+       alert("DEBE INGRESAR UN NOMBRE DE USUARIO...");   
+     
+       }
+     else{
+
+      $scope.mostrarPreguntas=true;
+      $scope.Nusuario=$scope.login.usuario;
+    console.log($scope.login.usuario);
+    $scope.formvisibility=true;
+     }
+   };
+  
+
+})
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
