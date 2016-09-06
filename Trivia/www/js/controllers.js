@@ -51,14 +51,19 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
-.controller('logCtrl', function($scope,$stateParams,$state){
-   
-    var contador=0;
+
+.controller('logCtrl', function($scope,$stateParams,$state,$firebaseObject,$window){
+     var ref = new Firebase("https://scoretrivia.firebaseio.com/");
+     $scope.puntajes=$firebaseObject(ref);
+        console.log($scope.puntajes);
+
+      var contador=0;
    $scope.login=function(){
      if($scope.login.usuario==null){
        alert("DEBE INGRESAR UN NOMBRE DE USUARIO...");   
        }
      else{
+      $scope.ocPuntajes=true;
       $scope.preguntas=true;
       $scope.Nusuario=$scope.login.usuario;
     console.log($scope.login.usuario);
@@ -67,22 +72,22 @@ angular.module('starter.controllers', [])
    };
     $scope.respuesta=function(res){
       console.log(res);
-        
+         
       if(res==0){
        $scope.res1=true;
        $scope.res2=true;
-       console.log("a");
+       $scope.preg1=true;
+  
       } 
       if(res==1){
        $scope.res0=true;
        $scope.res2=true;
-       console.log("b");
-      
+  $scope.preg1=true;    
       }
       if(res==2){
        $scope.res1=true;
        $scope.res0=true;
-       console.log("c");
+    $scope.preg1=true;
         contador+=10;
       
       }
@@ -90,51 +95,56 @@ angular.module('starter.controllers', [])
   if(res==3){
        $scope.res4=true;
        $scope.res5=true;
-       console.log("a");
+    $scope.preg2=true;
       } 
       if(res==4){
        $scope.res3=true;
        $scope.res5=true;
-       console.log("b");
-      
+      $scope.preg2=true;
       }
       if(res==5){
        $scope.res4=true;
        $scope.res3=true;
-       console.log("c");
        contador+=10;
+$scope.preg2=true;
       }
       
        if(res==6){
        $scope.res7=true;
        $scope.res8=true;
-       console.log("a");
+    $scope.preg3=true;
       } 
       if(res==7){
        $scope.res6=true;
        $scope.res8=true;
-       console.log("b");
-      
+      $scope.preg3=true;
       }
       if(res==8){
        $scope.res7=true;
        $scope.res6=true;
-       console.log("c");
-       contador+=10;
+        contador+=10;
+       $scope.preg3=true;
       }
      console.log("Score="+contador);
    
     };            
-  $scope.score=function(){
+     var flag;
+   $scope.score=function(){
+     if(contador>0 && flag!=1){
+     console.log(contador);
+     ref.push(contador);
+    flag=1;
   $state.go('app.browse',{score:contador});
-
-  };
-
-})
+    }
+     };
+  })
 .controller('browseCtrl', function($scope,$state){
   $scope.score= $state.params.score;
-    
+   $scope.resetear=function(){
+  document.location.href='index.html';
+};
 
 })
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
