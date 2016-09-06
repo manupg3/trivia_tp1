@@ -51,24 +51,90 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
-.controller('logCtrl', function($scope){
-
+.controller('logCtrl', function($scope,$stateParams,$state){
+   
+    var contador=0;
    $scope.login=function(){
      if($scope.login.usuario==null){
        alert("DEBE INGRESAR UN NOMBRE DE USUARIO...");   
-     
        }
      else{
-
-      $scope.mostrarPreguntas=true;
+      $scope.preguntas=true;
       $scope.Nusuario=$scope.login.usuario;
     console.log($scope.login.usuario);
     $scope.formvisibility=true;
      }
    };
-  
+    $scope.respuesta=function(res){
+      console.log(res);
+        
+      if(res==0){
+       $scope.res1=true;
+       $scope.res2=true;
+       console.log("a");
+      } 
+      if(res==1){
+       $scope.res0=true;
+       $scope.res2=true;
+       console.log("b");
+      
+      }
+      if(res==2){
+       $scope.res1=true;
+       $scope.res0=true;
+       console.log("c");
+        contador+=10;
+      
+      }
+      
+  if(res==3){
+       $scope.res4=true;
+       $scope.res5=true;
+       console.log("a");
+      } 
+      if(res==4){
+       $scope.res3=true;
+       $scope.res5=true;
+       console.log("b");
+      
+      }
+      if(res==5){
+       $scope.res4=true;
+       $scope.res3=true;
+       console.log("c");
+       contador+=10;
+      }
+      
+       if(res==6){
+       $scope.res7=true;
+       $scope.res8=true;
+       console.log("a");
+      } 
+      if(res==7){
+       $scope.res6=true;
+       $scope.res8=true;
+       console.log("b");
+      
+      }
+      if(res==8){
+       $scope.res7=true;
+       $scope.res6=true;
+       console.log("c");
+       contador+=10;
+      }
+     console.log("Score="+contador);
+   
+    };            
+  $scope.score=function(){
+  $state.go('app.browse',{score:contador});
+
+  };
 
 })
+.controller('browseCtrl', function($scope,$state){
+  $scope.score= $state.params.score;
+    
 
+})
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

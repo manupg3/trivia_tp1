@@ -43,10 +43,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
   .state('app.browse', {
-      url: '/browse',
+      url: '/browse/:score',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/browse.html',
+           controller:'browseCtrl'
         }
       }
     })

@@ -12,9 +12,27 @@
         </label>
       </div>
     </form>
-    <div name="Preguntas" ng-show="mostrarPreguntas" ng-model="Nusuario">
+    <div ng-show="preguntas">
     <h2>BIENVENIDO: {{Nusuario}}!!</h2>
-
-    </div>>
+    <div >
+     <label align="center"><h2>¿En que año finalizo la 2da guerra mundial?</h2></label>
+         <button ng-hide="res0" class="button button-light" ng-click="respuesta(0)" >1940 </button>
+         <button ng-hide="res1" class="button button-light" ng-click="respuesta(1)" >1954 </button>
+         <button ng-hide="res2" class="button button-light" ng-click="respuesta(2)" >1945 </button>
+    </div>
+    <div >
+      <label align="center"><h2>¿Que son los quarks?</h2></label>
+      <button  ng-hide="res4" class="button button-light" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
+      <button  ng-hide="res5" class="button button-light" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button >
+      <button ng-hide="res3" class="button button-light" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
+   </div> 
+   <div >
+       <label align="center"><h2>¿Quien gano el primer premio nobel de la paz?</h2></label>
+     <button ng-hide="res8" class="button button-light" ng-click="respuesta(8)">Frédéric Passy</button >
+     <button ng-hide="res7" class="button button-light" ng-click="respuesta(7)">Élie Ducommun</button >
+      <button ng-hide="res6" class="button button-light" ng-click="respuesta(6)">Jean Henri Dunant</button >
+   </div>
+            <button class="button button-positive" ng-click="score()">CALCULAR RESULTADOS</button> 
+  </div>
   </ion-content>
 </ion-view>
