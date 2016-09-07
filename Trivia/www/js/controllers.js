@@ -63,6 +63,11 @@ angular.module('starter.controllers', [])
        alert("DEBE INGRESAR UN NOMBRE DE USUARIO...");   
        }
      else{
+      $scope.btnScore=true;
+      $scope.btnreset=true;
+      $scope.preg1=false;
+      $scope.preg2=true;
+      $scope.preg3=true;
       $scope.ocPuntajes=true;
       $scope.preguntas=true;
       $scope.Nusuario=$scope.login.usuario;
@@ -77,17 +82,23 @@ angular.module('starter.controllers', [])
        $scope.res1=true;
        $scope.res2=true;
        $scope.preg1=true;
+   $scope.preg2=false;
+            
   
       } 
       if(res==1){
        $scope.res0=true;
        $scope.res2=true;
   $scope.preg1=true;    
+     $scope.preg2=false;
+         
       }
       if(res==2){
        $scope.res1=true;
        $scope.res0=true;
     $scope.preg1=true;
+     $scope.preg2=false;
+       
         contador+=10;
       
       }
@@ -95,39 +106,51 @@ angular.module('starter.controllers', [])
   if(res==3){
        $scope.res4=true;
        $scope.res5=true;
-    $scope.preg2=true;
+       $scope.preg2=true;
+       $scope.preg3=false;
+       
       } 
       if(res==4){
        $scope.res3=true;
        $scope.res5=true;
       $scope.preg2=true;
+      $scope.preg3=false;
+
       }
       if(res==5){
        $scope.res4=true;
        $scope.res3=true;
        contador+=10;
-$scope.preg2=true;
+     $scope.preg2=true;
+      $scope.preg3=false;
+
       }
       
        if(res==6){
        $scope.res7=true;
        $scope.res8=true;
-    $scope.preg3=true;
+       $scope.preg3=true;
+        $scope.btnScore=false;
       } 
       if(res==7){
        $scope.res6=true;
        $scope.res8=true;
       $scope.preg3=true;
+      $scope.btnScore=false;
       }
       if(res==8){
        $scope.res7=true;
        $scope.res6=true;
         contador+=10;
        $scope.preg3=true;
+       $scope.btnScore=false;
       }
      console.log("Score="+contador);
    
-    };            
+    };
+   $scope.reset=function(){
+  document.location.href='index.html';
+   };
      var flag;
    $scope.score=function(){
      if(contador>0 && flag!=1){
@@ -136,7 +159,12 @@ $scope.preg2=true;
     flag=1;
   $state.go('app.browse',{score:contador});
     }
+    else{
+      alert("NO OBTUVO NINGUN PUNTO...INTENTELO DE NUEVO..."); 
+       $scope.btnreset=false;
+    }
      };
+    
   })
 .controller('browseCtrl', function($scope,$state){
   $scope.score= $state.params.score;
