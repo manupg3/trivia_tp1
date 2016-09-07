@@ -1,38 +1,51 @@
-<ion-view view-title="Search">
+<ion-view view-title="TRIVIA">
   <ion-content>
-    <h1 align="center">TRIVIA</h1>
-     <form ng-hide="formvisibility">
-      <div >
-        <label class="item item-input">
-          <span class="input-label">Uusario</span>
+     <div align="center">
+
+     <form ng-hide="formvisibility" id="frmlog" name="form">
+      <h1 align="center">NOMBRE DEL JUGADOR</h1>
+            <label class="item item-input">
+      
           <input type="text" ng-model="login.usuario">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" ng-click="login()">Log in</button>
+          <button class="button button-block button-positive" ng-click="login()">COMENZAR</button>
         </label>
-      </div>
     </form>
-    <div ng-show="preguntas">
-    <h2>BIENVENIDO: {{Nusuario}}!!</h2>
-    <div >
-     <label align="center"><h2>¿En que año finalizo la 2da guerra mundial?</h2></label>
-         <button ng-hide="res0" class="button button-light" ng-click="respuesta(0)" >1940 </button>
-         <button ng-hide="res1" class="button button-light" ng-click="respuesta(1)" >1954 </button>
-         <button ng-hide="res2" class="button button-light" ng-click="respuesta(2)" >1945 </button>
     </div>
-    <div >
+  <div id="ultimos" align="center" ng-hide="ocPuntajes">
+       <h2>ULTIMOS PUNTAJES</h2>     	 
+   <ion-list>
+   <ion-item ng-repeat="puntaje in puntajes ">
+    SCORE:{{puntaje}}
+   </ion-item>
+    </ion-list> 	 
+
+    </div>
+    <div ng-show="preguntas">
+  
+    <div ng-hide="preg1">
+     <label align="center"><h2>¿En que año finalizo la 2da guerra mundial?</h2></label>
+         <button  class="button button-outline button-positive" ng-click="respuesta(0)" >1940 </button>
+         <button  class="button button-outline button-positive" ng-click="respuesta(1)" >1954 </button>
+         <button  class="button button-outline button-positive" ng-click="respuesta(2)" >1945 </button>                    
+    </div>
+    <div ng-hide="preg2">
       <label align="center"><h2>¿Que son los quarks?</h2></label>
-      <button  ng-hide="res4" class="button button-light" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
-      <button  ng-hide="res5" class="button button-light" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button >
-      <button ng-hide="res3" class="button button-light" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
+      <button   class="button button-outline button-positive" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
+      <button   class="button button-outline button-positive" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button >
+      <button class="button button-outline button-positive" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
    </div> 
-   <div >
+   <div ng-hide="preg3" >
        <label align="center"><h2>¿Quien gano el primer premio nobel de la paz?</h2></label>
-     <button ng-hide="res8" class="button button-light" ng-click="respuesta(8)">Frédéric Passy</button >
-     <button ng-hide="res7" class="button button-light" ng-click="respuesta(7)">Élie Ducommun</button >
-      <button ng-hide="res6" class="button button-light" ng-click="respuesta(6)">Jean Henri Dunant</button >
+     <button  class="button button-outline button-positive" ng-click="respuesta(8)">Frédéric Passy</button >
+     <button  class="button button-outline button-positive" ng-click="respuesta(7)">Élie Ducommun</button >
+      <button  class="button button-outline button-positive" ng-click="respuesta(6)">Jean Henri Dunant</button >
    </div>
-            <button class="button button-positive" ng-click="score()">CALCULAR RESULTADOS</button> 
+            <div align="center">
+            <button ng-hide="btnScore" class="button button-positive" ng-click="score()">MOSTRAR RESULTADOS</button> 
+            <button ng-hide="btnreset" class="button button-positive" ng-click="reset()">RESETEAR JUEGO</button>
+         </div>
   </div>
   </ion-content>
 </ion-view>
