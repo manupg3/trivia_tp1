@@ -1,50 +1,51 @@
-<ion-view view-title="TRIVIA">
+<ion-view  view-title="TRIVIA">
   <ion-content>
-     <div align="center">
+     <div align="center" id="log" ng-hide="formvisibility">
 
-     <form ng-hide="formvisibility" id="frmlog" name="form">
-      <h1 align="center">NOMBRE DEL JUGADOR</h1>
-            <label class="item item-input">
-      
+     <form  id="frmlog" name="form">
+      <h2 align="center"><u>NOMBRE DEL JUGADOR</u></h2>
+          
           <input type="text" ng-model="login.usuario">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" ng-click="login()">COMENZAR</button>
-        </label>
+   
+       
+          <button  class="button button-block button-positive" ng-click="login()">COMENZAR</button>
+      
     </form>
     </div>
-  <div id="ultimos" align="center" ng-hide="ocPuntajes">
-       <h2>ULTIMOS PUNTAJES</h2>     	 
-   <ion-list>
+  <div id="preg" align="center" ng-hide="ocPuntajes">
+       <h2><u> ULTIMOS PUNTAJES</u></h2>     	 
+   <ion-list >
    <ion-item ng-repeat="puntaje in puntajes ">
-    SCORE:{{puntaje}}
+   <h2><u>SCORE:</u>{{puntaje}}</h2>
    </ion-item>
     </ion-list> 	 
-
+    
     </div>
-    <div ng-show="preguntas">
-  
-    <div ng-hide="preg1">
-     <label align="center"><h2>¿En que año finalizo la 2da guerra mundial?</h2></label>
-         <button  class="button button-outline button-positive" ng-click="respuesta(0)" >1940 </button>
-         <button  class="button button-outline button-positive" ng-click="respuesta(1)" >1954 </button>
-         <button  class="button button-outline button-positive" ng-click="respuesta(2)" >1945 </button>                    
+    <div id="preg" ng-show="preguntas" >
+    
+    <div ng-hide="preg1" >
+     <label align="center"><h2><u>¿En que año finalizo la 2da guerra mundial?</u></h2></label>
+         <button class="button button-block  button-positive" ng-click="respuesta(0)" >1940</button>
+         <button class="button button-block button-positive" ng-click="respuesta(1)" >1954</button>
+         <button class="button button-block button-positive" ng-click="respuesta(2)" >1945</button>                    
     </div>
     <div ng-hide="preg2">
       <label align="center"><h2>¿Que son los quarks?</h2></label>
-      <button   class="button button-outline button-positive" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
-      <button   class="button button-outline button-positive" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button >
-      <button class="button button-outline button-positive" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
+      <button class="button button-block   button-positive" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
+      <button class="button button-block  button-positive" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button>
+      <button class="button button-block  button-positive" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
    </div> 
    <div ng-hide="preg3" >
        <label align="center"><h2>¿Quien gano el primer premio nobel de la paz?</h2></label>
-     <button  class="button button-outline button-positive" ng-click="respuesta(8)">Frédéric Passy</button >
-     <button  class="button button-outline button-positive" ng-click="respuesta(7)">Élie Ducommun</button >
-      <button  class="button button-outline button-positive" ng-click="respuesta(6)">Jean Henri Dunant</button >
-   </div>
-            <div align="center">
-            <button ng-hide="btnScore" class="button button-positive" ng-click="score()">MOSTRAR RESULTADOS</button> 
-            <button ng-hide="btnreset" class="button button-positive" ng-click="reset()">RESETEAR JUEGO</button>
+     <button class="button button-block  button-positive" ng-click="respuesta(8)">Frédéric Passy</button>
+     <button class="button button-block  button-positive" ng-click="respuesta(7)">Élie Ducommun</button>
+      <button class="button button-block  button-positive" ng-click="respuesta(6)">Jean Henri Dunant</button >
+  </div >
+            <div align="center" style="padding-top:10px; ">
+
+            <button ng-hide="btnScore" class="button button-block button-positive" ng-click="score()">MOSTRAR RESULTADOS</button> 
+            <br/>
+            <button ng-hide="btnreset" class="button button-block button-positive" ng-click="reset()">REINTENTAR</button>
          </div>
   </div>
   </ion-content>

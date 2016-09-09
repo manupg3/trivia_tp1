@@ -162,6 +162,7 @@ angular.module('starter.controllers', [])
     else{
       alert("NO OBTUVO NINGUN PUNTO...INTENTELO DE NUEVO..."); 
        $scope.btnreset=false;
+       $scope.btnScore=true;
     }
      };
     
@@ -171,6 +172,10 @@ angular.module('starter.controllers', [])
    $scope.resetear=function(){
   document.location.href='index.html';
 };
+  $scope.salir=function(){
+    ionic.Platform.exitApp();
+
+  };
 
 })
 

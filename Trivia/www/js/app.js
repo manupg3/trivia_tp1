@@ -22,8 +22,10 @@ angular.module('starter', ['ionic', 'starter.controllers','firebase'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+   $ionicConfigProvider.navBar.alignTitle('center');
+
+  $stateProvider 
 
     .state('app', {
     url: '/app',
@@ -38,6 +40,16 @@ angular.module('starter', ['ionic', 'starter.controllers','firebase'])
       'menuContent': {
         templateUrl: 'templates/search.html',
            controller:'logCtrl'
+      }
+    }
+  })
+
+  .state('app.acercaDe', {
+    url: '/acercaDe',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/acercaDe.html',
+    
       }
     }
   })
@@ -71,5 +83,5 @@ angular.module('starter', ['ionic', 'starter.controllers','firebase'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/search');
 });
