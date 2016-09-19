@@ -24,22 +24,22 @@
     <div id="preg" ng-show="preguntas" >
     
     <div ng-hide="preg1" >
-     <label align="center"><h2><u>¿En que año finalizo la 2da guerra mundial?</u></h2></label>
-         <button class="button button-block  button-positive" ng-click="respuesta(0)" >1940</button>
-         <button class="button button-block button-positive" ng-click="respuesta(1)" >1954</button>
-         <button class="button button-block button-positive" ng-click="respuesta(2)" >1945</button>                    
+     <label for="pregunta1" align="center" ><h2><u>{{pregunta1}}</u></h2></label>
+         <button class="button button-block  button-positive" ng-click="respuesta(0)" >{{resp0}}</button>
+         <button class="button button-block button-positive" ng-click="respuesta(1)" >{{resp1}}</button>
+         <button class="button button-block button-positive" ng-click="respuesta(2)" >{{resp2}}</button>                    
     </div>
     <div ng-hide="preg2">
-      <label align="center"><h2>¿Que son los quarks?</h2></label>
-      <button class="button button-block   button-positive" ng-click="respuesta(4)">Un grupo de protones con carga neutra</button > 
-      <button class="button button-block  button-positive" ng-click="respuesta(5)" >Un grupo de femiones que interactuan entre si formando materia nuclear</button>
-      <button class="button button-block  button-positive" ng-click="respuesta(3)">Un grupo de electrones y protones</button >
+      <label for="pregunta2" align="center"><h2>{{pregunta2}}</h2></label>
+      <button class="button button-block   button-positive" ng-click="respuesta(4)">{{resp4}}</button > 
+      <button class="button button-block  button-positive" ng-click="respuesta(5)" >{{resp5}}</button>
+      <button class="button button-block  button-positive" ng-click="respuesta(3)">{{resp3}}</button >
    </div> 
    <div ng-hide="preg3" >
-       <label align="center"><h2>¿Quien gano el primer premio nobel de la paz?</h2></label>
-     <button class="button button-block  button-positive" ng-click="respuesta(8)">Frédéric Passy</button>
-     <button class="button button-block  button-positive" ng-click="respuesta(7)">Élie Ducommun</button>
-      <button class="button button-block  button-positive" ng-click="respuesta(6)">Jean Henri Dunant</button >
+       <label for="pregunta3" align="center"><h2>{{pregunta3}}</h2></label>
+     <button class="button button-block  button-positive" ng-click="respuesta(8)">{{resp8}}</button>
+     <button class="button button-block  button-positive" ng-click="respuesta(7)">{{resp7}}</button>
+      <button class="button button-block  button-positive" ng-click="respuesta(6)">{{resp6}}</button >
   </div >
             <div align="center" style="padding-top:10px; ">
 

@@ -10,6 +10,8 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
+
+
   $scope.loginData = {};
 
   // Create the login modal that we will use later
@@ -52,13 +54,47 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('logCtrl', function($scope,$stateParams,$state,$firebaseObject,$window){
+
+.controller('logCtrl', function($scope,$stateParams,$state,$firebaseObject,$window,$timeout){
+      
+ 
      var ref = new Firebase("https://scoretrivia.firebaseio.com/");
      $scope.puntajes=$firebaseObject(ref);
         console.log($scope.puntajes);
+  
 
       var contador=0;
    $scope.login=function(){
+     //    $cordovaNativeAudio
+     // .preloadComplex('correcto', 'sonidos/correcto.mp3', 1, 1)
+     // .then(function (msg) {
+     //   console.log(msg);
+     // }, function (error) {
+     //   console.error(error);
+     // });
+     //  $cordovaNativeAudio
+     // .preloadComplex('incorrecto', 'sonidos/incorrecto.mp3', 1, 1)
+     // .then(function (msg) {
+     //   console.log(msg);
+     // }, function (error) {
+     //   console.error(error);
+     // });
+    $scope.pregunta1='¿En que año finalizo la 2da guerra mundial?';
+    $scope.resp0='1940';
+    $scope.resp1='1955';
+    // $scope.resp2='1945';
+   
+    $scope.pregunta2='¿Que son los quarks?';
+    $scope.resp3='Un grupo de protones con carga neutra';
+    $scope.resp5='Un grupo de femiones que interactuan entre si formando materia nuclear';  
+    $scope.resp4='Un grupo de electrones y protones';
+
+    $scope.pregunta3='¿Quien gano el primer premio nobel de la paz?';
+    $scope.resp8='Frédéric Passy';
+    $scope.resp7='Élie Ducommun';
+    $scope.resp6='Jean Henri Dunant';
+
+
      if($scope.login.usuario==null){
        alert("DEBE INGRESAR UN NOMBRE DE USUARIO...");   
        }
@@ -82,25 +118,34 @@ angular.module('starter.controllers', [])
        $scope.res1=true;
        $scope.res2=true;
        $scope.preg1=true;
-   $scope.preg2=false;
-            
-  
+    $scope.preg2=false;
+    console.log($scope.pregunta1);
+    ref.push($scope.pregunta1+"--"+$scope.resp0);
+     //  $cordovaNativeAudio.play('incorrecto');
+     //  $cordovaVibration.vibrate(300);
+     // $cordovaVibration.vibrate(500);
+        $scope.res1=true;
+       $scope.res2=true;
+       $scope.preg1=true;
+    $scope.preg2=false;
       } 
       if(res==1){
        $scope.res0=true;
        $scope.res2=true;
-  $scope.preg1=true;    
+   $scope.preg1=true;    
      $scope.preg2=false;
-         
+    // $cordovaNativeAudio.play('incorrecto');
+    //  $cordovaVibration.vibrate(100);
+    //   $cordovaVibration.vibrate(100);     
       }
       if(res==2){
        $scope.res1=true;
        $scope.res0=true;
     $scope.preg1=true;
      $scope.preg2=false;
-       
-        contador+=10;
-      
+     contador+=10;
+   // $cordovaNativeAudio.play('correcto');  
+   //   $cordovaVibration.vibrate(100); 
       }
       
   if(res==3){
@@ -108,13 +153,18 @@ angular.module('starter.controllers', [])
        $scope.res5=true;
        $scope.preg2=true;
        $scope.preg3=false;
-       
+    // $cordovaNativeAudio.play('incorrecto');    
+    // $cordovaVibration.vibrate(100);
+    //  $cordovaVibration.vibrate(100);    
       } 
       if(res==4){
        $scope.res3=true;
        $scope.res5=true;
       $scope.preg2=true;
       $scope.preg3=false;
+     // $cordovaNativeAudio.play('incorrecto');  
+     //   $cordovaVibration.vibrate(100);
+     //  $cordovaVibration.vibrate(100);
 
       }
       if(res==5){
@@ -123,6 +173,8 @@ angular.module('starter.controllers', [])
        contador+=10;
      $scope.preg2=true;
       $scope.preg3=false;
+      // $cordovaNativeAudio.play('correcto');
+      //  $cordovaVibration.vibrate(100);
 
       }
       
@@ -131,12 +183,19 @@ angular.module('starter.controllers', [])
        $scope.res8=true;
        $scope.preg3=true;
         $scope.btnScore=false;
+      // $cordovaNativeAudio.play('incorrecto');   
+      //   $cordovaVibration.vibrate(100);
+      //   $cordovaVibration.vibrate(100);
+
       } 
       if(res==7){
        $scope.res6=true;
        $scope.res8=true;
       $scope.preg3=true;
       $scope.btnScore=false;
+      // $cordovaNativeAudio.play('incorrecto'); 
+      //  $cordovaVibration.vibrate(100);
+      // $cordovaVibration.vibrate(100);
       }
       if(res==8){
        $scope.res7=true;
@@ -144,6 +203,8 @@ angular.module('starter.controllers', [])
         contador+=10;
        $scope.preg3=true;
        $scope.btnScore=false;
+      // $cordovaNativeAudio.play('correcto');
+      //  $cordovaVibration.vibrate(100);
       }
      console.log("Score="+contador);
    
